@@ -1,0 +1,268 @@
+Copyright ? Freeware from Daniel Waldmüller	
+
+mission "outreach1"
+	name "Asteroid mining Allowness"
+	primary
+	source		"Sielwode"
+	to offer	"player reputation: USC" >= 1
+			"player reputation: USC" < 5		
+	on offer
+		conversation
+			` One of the gouverneur assistance approaches you. "Hello <first> <last>, i am one of the governeurs assistant. You are interested in purchasing a Asteroid mining Allowness for 10000 credits?" `
+			` This seems like a profitable offer, if it is real. Otherwise it's the first and maybe only way to find out, where you are, and how to leave this single system. Do you buy the map? `
+			choice
+				`	(Buy it.)` accept
+				`	(Don't buy it.)` decline
+	on accept `You exchange your credits for this official allowness. "good choice" the seller nods. "Since you stranded injured in Outreach Space, your health and reputation grown well!" he says. "We're actually in need of more pilots for planet supply business, so our governeur think it will be wise, to give you a good chance and allow you to assist the USC, upkeeping our planets. There are weekly workers to transport, you find those quests at missionboards. Not the best profit conditions, but you know: One hand washes the other!" ..he walks away.  `
+			payment -10000
+	on decline	dialog "you declined outreachs primary mission - your reputation sunks!"
+		"player reputation: USC" -1	
+	on complete
+		"player reputation: USC" +1			
+#----------------------------------------------------------------------------
+			
+mission "outreach2"
+	name "Business trip to <destination>."
+	primary
+	description "Meet the planetary gouverneur on <destination>"
+	source   	"Sielwode"
+	destination	"Quentin" 
+	to offer	has "outreach1" done
+	to accept	has "Weekly workers transfer (51)" done
+			has "Weekly workers transfer (52)" done
+			has "Weekly workers transfer (53)" done
+		conversation
+			`	"Hallo pilot <last>", the governeur says. "We're actually in need of more traders for planet supply business, come and met me on <destination>."`
+			choice
+				`	"You agree to meet the governeur"`
+					accept
+				`	"No. Not today."`
+					decline
+	on decline	dialog "you declined outreachs primary mission - no quests are following now!"
+	on accept	"landing access: Quentin" = 1		
+			dialog `"you gain landing permissions for Quentin"`
+	on complete
+			payment 1300000
+			dialog	`The governeur welcome you warmly "Hello pilot <last>. I've followed your business and now its time to promote you officially to a trader! You should buy a new trading ship with 140 tons cargospace! To force your Decision you got 1.000.000 credits now and 300.000cr to upgrate it like your choice. For those i would like you to do all transport supply quests, each one time. If you are less on money, there may be some mining quests at jobboard. Save journeys..."`
+			
+#----------------------------------------------------------------------------
+mission "outreach3"
+	name "Meet Quentin's gouverneur again!"
+	primary
+	description 	"Meet the planetary gouverneur on <destination>"
+	source 	attributes "outreach"
+	destination 	"Quentin"
+	to offer	has "outreach2" done
+			has mission "Food delivery (60)" done
+			has mission "Water delivery (61)" done
+			has mission "Food delivery (62)" done
+			has mission "Iron delivery (63)" done
+			has mission "Medical delivery (64)" done
+			has mission "Fertilizer delivery (65)" done
+			has mission "Inert-Gas delivery (66)" done
+			has mission "Minerals delivery (67)" done
+			has mission "Tools delivery (68)" done
+			has mission "Silizium delivery (69)" done
+	on offer	conversation
+			`	"Hallo trader <last>", the governeur says. "We're actually in need of more worker-pilots for worker exchance business, come and met me on <destination>."`
+			choice
+				`	"You agree to meet the governeur"`
+					accept
+				`	"No. I prever doing business on my own."`
+					decline
+	on decline	dialog  `you declined outreachs primary mission - no primary quests are following! You are on your own business syle now... `
+	on accept	dialog	`The planetary governeur welcome you warmly again. "Hello trader <last> and welcome to Quentin. I've followed your business and now its time to promote you officially to a worker-pilot! To force your decision, you will get 2.000.000cr to buy an additional ship with more bunk-capacity (35 bunks should be enough) and to upgrate it like your choice. For those i would like you, to do all worker-transportation quests, each one time. If it's done, report it on Utopia. Here, take this USC-License. What gives you landing permissions for all planets in Outreach. Save journeys..."`			
+	on complete
+			giv "USC-License"
+			payment 2000000				
+#------------------------------------------------------------------------------		
+mission "outreach4"
+	name "Business meeting on <destination>."
+	primary
+	description 	"Meet the ,USC-gouverneur of trade and external affairs, Estrella on <destination>"
+	source 	attributes "outreach"
+	destination 	"Utopia"
+	to offer	has "USC-License"
+			has mission "Monthly workers transfer (54)" done
+			has mission "Monthly workers transfer (55)" done
+			has mission "Monthly workers transfer (56)" done
+			has mission "Monthly workers transfer (57)" done
+			has mission "Monthly workers transfer (58)" done
+			has mission "Monthly workers transfer (59)" done
+	on offer
+		conversation
+			`	"Hallo worker-pilot <first> <last>", governeur Estrella says. "We're actually in need of more traders for import-export business, finish your worker transfers and come and met me on <destination>."`	
+	on enter      "Utopia"
+		conversation
+			`Estrella welcomes you warmly "Hello <first> <last> and welcome on Utopia! I've heard a lot of your trading skills and now its time to promote you officially to a importeur! Now you're become also a USC-Licence, what means permanently landing agreement on all our Planets! We are also in need of industrial goods from the nearby systems. If you agree to your new position, you have to be discret about our system-koordinates! There are other governments out there, mass tourism is non of our wishes, and they must not know where we are from. You understand? If you get asked you come from another syndicate world, is this clear!?"`
+			choice	
+				`    "Yes, madam gouverneur"   ` accept
+				`    "I do what i will"   `      fail
+		on fail 	dialog "you are under arrest for some long days...weeks...months...after your session in jail your account is set to zero credits, your ships are confiscated and you have to work on a metal mine on molon without having another chance to grow up your business again. 5 years later you have an accident. You are childless...and...death!!  go to: death	
+		on accept	dialog "Perfekt decision, you should could buy a heavy freighter, maybe 7 millions more you will need. They can be earned by doing mining. There are some quests at utopia-jobboard. I only can give you 600.000cr to upgrate it like your choice and to purcase the trading goods our system Outreach is in need. We also give you landing codes for all nearby anarchistic bases, hope they still work, and you can bribeless land on many syndicate Planets. If you have found a source of Fuel-Ponds or Ramscopes you can share it with our outfitters in reguard you can buy one of our very useful, but massiv fuel eating hiding-systems. You find our Import-Export jobs only at Sielwode or Utopia jobboard. Watch out, out there nearby all other people like to gain hand on your new Jump Drive or the hiding system..."`
+	on complete
+			outfit	"Jump Drive"
+			payment 600000
+			"player reputation: USC" = 5
+			"player reputation: Syndicate" +100				
+#---------------------------------------------------------------------------------------------------------------------
+mission "outreach5"
+	name "Fuel Pond and Ramscoop to Utopia-Outfitter"
+	primary
+	description "Search for, and buy 5 Fuel-Pond and 5 Ramscoop and sell it to <origin>"
+	source		"Utopia"
+	to offer	has mission "outreach4" done
+			has "USC-License"
+	on offer	has mission "Food delivery (70)" done
+			has mission "Heavy Metal delivery (71)" done
+			has mission "Minerals delivery (72)" done
+			has mission "Fertilizer delivery (73)" done
+			has mission "Big food delivery (74)" done
+			has mission "Big food delivery (75)" done
+			has mission "Big food delivery (76)" done
+			has mission "Silizium delivery (77)" done
+			has mission "Big water delivery (78)" done
+			has mission "Pirat Export (81)" done
+			has mission "Import assistment (85)" done		
+	on fail
+		dialog "You have failed an primary mission!"
+	to accept	has "Jump Drive" installed
+	on accept
+		conversation 
+		` "Hello importeur <last>, you remember what was spoken? We want ramscoop and fuel tank. Don't forget!" `
+	 
+	on complete
+		cargo	"Fuel-Pond" -5
+		cargo   "Ramscoop" -5
+		payment	1500000
+		dialog
+			`Estrella sends you a message: "Sorry i am actually on holiday, but i left order to honorly reward your search with 1.500.000 credits for your purchase costs. Please stay for a week at Outreach, because i have heard of some trouble outside. Our techs found a locating beagle placed outside on your shiphull! What ever follows, i think it will come soon...meanwhile you can go to mining business, there are quests at Utopia jobboard, and begin collect 5 tons of every minerable from the Asteroids here and near Solaris: Titan, Thungsten, Silver, Gold, Uranium, Neodymiun, Platin, yottrite and Mysterious treasure, i think we will need them next time we met."`
+#---------------------------------------------------------------------------------------------------------------
+mission "outreach6"
+	name "Mine different things"
+	primary
+	discription	"start to outreach and collect ressources from asteroids.."
+	on enter outreach
+		dialog phrase ` "Alert!! Aggressiv intruder in outreach! - all available ships: disable or stop them!" `
+		event	npc evade
+			to spawn
+			"ships: Quicksilver" + "ships: Hawk" + "ships: Fury" + "ships: Scout" >= 3
+			government "BountyHunter"
+		dialog phrase	` "Hey you low unarmed fools - drop your cargo's - or die!" `
+	on fail
+		dialog `"You have failed an essential mission. To continue the storyline, load from your last game save."`
+	on complete
+		dialog `Gouverneur Estrella: "You have killed the Pirates?! Congratulations! Land to refuel and report, defender <last>!"
+		payment  3000000
+#-------------------------------------------------------------------------
+mission "outreach7"
+	name "Exchange Materials for Defend-Carrier"
+	primary
+	to offer  has "USC-Licence"
+		  has mission "outreach6" done
+	to accept has mission "Harvest (90)" done
+		  has mission "Harvest (91)" done
+		  has mission "Harvest (92)" done
+		  has mission "Harvest (93)" done
+	on accept
+		  conversation `Estrella comes to meet you "Oh! Holy Defender! Am i glad you're alive, <first>!" she seems very worried about you "Oh, only <first>?" you ask. Estrellas eyes stares to ground, her teint become some red touch.."äh <last> sorry. We do not have any enemies here in outreach since years, you have to understand." she exclaimes. "Now i think it's a good idea to let you fly one of our Defend-Carrier. What do you mean?" before you can answer Estrella, she goes on "Shh! This wasn't a answerable question. You get me ähm..it! But we are less on building materials. You have got those materials collected, i asked last time, yes?"
+	on complete outfit "Titan" -5
+		    outfit "Copper" -5
+		    outfit "Silver" -5
+		    outfit "Gold" -5
+		    outfit "Neodymium" -5
+		    outfit "Uranium" -5
+		    outfit "Platin" -5
+		    outfit "yottrite" -5
+		    outfit "Mysterious treasure" -5
+		    giv ship "Hipparion (USC)"
+		    payment 500000		
+#-------------------------------------------------------------------------------
+event "outreach8"
+	name "System-Defense (2)"
+	primary
+	on enter outreach
+		dialog	` "Hey captain <last> it's time for revenge!" `
+	npc evade
+		to spawn
+			"ships: Quicksilver" + "ships: Raven (Afterburner)" + "ships: Osprey (Missile)" + "ships: "Leviathan (Particle Chaser)" + "ships: Falcon (Plasma)" + "ships: Berserker" >= 6
+		government "Bounty Hunter"
+	on fail
+		dialog "You have failed an essential mission. To continue the storyline, load from your last game save."
+	on complete
+		dialog `Gouverneur Estrella: "You have disabled a full Bounty Hunter's gang! WOW!" her eyes blinks disbelieving " Congratulations! Defender <first> <last> i recommend you for the next planetary gouverneur election! Surprised? Every planet has a planetary gouverneur and the USC has three gouverneur, too. Ressources-, science- and externals-gouverneur. And every one of those nine gouverneurs can have an assistant. Answers this your question?" She smiles. `
+		"player reputation: USC" = +8
+		payment	5000000
+		giv "USC-Gouverneur-License"
+#---------------------------------------------------------------------------------
+mission "outreach9"
+	name "Elections for next planetary Gouverneur"
+	primary
+	landing
+	to offer 	has "outreach8" done
+			has "USC-Gouverneur-License"
+	on offer
+		conversation	`Estrella sends you a message: "Excuse me, this week is the election, defender <last>. For which planet do you want to candidate?
+			choice
+				` Molongiena `		
+				` Utopia `	
+				` Sielwode `	
+				` Quentin `	
+				` Tharkad `
+				` Molon `		
+			label Molongiena
+				giv ship "SV-4450 Sovereign" "Molongiena"
+				"salary: OSC" = 15000
+		dialog "You won! Your assistant introduces you to your new job and explain that your governeurs salary is daily 15.000cr. Your reputation grow and your personal Ship is the Souvereign with our planets Name in Hangar."
+			label Utopia
+				giv ship "SV-4450 Sovereign" "Utopia"	
+				"salary: OSC" = 20000
+		dialog "You won! Your assistant introduces you to your new job and explain that your governeurs salary is daily 20.000cr. Your reputation grow and your personal Ship is the Souvereign with our planets Name in Hangar."
+			label Sielwode	
+				giv ship "SV-4450 Sovereign" "Sielwode"
+				"salary: OSC" = 20000
+		dialog "You won! Your assistant introduces you to your new job and explain that your governeurs salary is daily 20.000cr. Your reputation grow and your personal Ship is the Souvereign with our planets Name in Hangar."
+			label Quentin
+				giv ship "SV-4450 Sovereign" "Quentin"
+				"salary: OSC" = 20000
+		dialog "You won! Your assistant introduces you to your new job and explain that your governeurs salary is daily 20.000cr. Your reputation grow and your personal Ship is the Souvereign with our planets Name in Hangar."
+			label Tharkad
+				giv ship "SV-4450 Sovereign" "Tharkad"
+				"salary: OSC" = 15000
+		dialog "You won! Your assistant introduces you to your new job and explain that your governeurs salary is daily 15.000cr. Your reputation grow and your personal Ship is the Souvereign with our planets Name in Hangar."
+			label Molon
+				giv ship "SV-4450 Sovereign" "Molon"
+				"salary: OSC" = 15000
+		dialog "You won! Your assistant introduces you to your new job and explain that your governeurs salary is daily 15.000cr. Your reputation grow and your personal Ship is the Souvereign with our planets Name in Hangar."
+	on complete	payment 5000000
+			"player reputation: USC" = +9
+#-------------------------------------------------------------------------------------------------------------------------
+mission "outreach-final"
+	name "Elections for gouverneur of trade and external affairs"
+	source 	"NewAvalon"
+	to offer	has "outreach9" done
+			has "USC-Gouverneur-License"
+			has mission "Harvest (79)" done
+			has mission "Syndicate Export (80)" done
+			has mission "Pirat Export (82)" done
+			has mission "Syndicate Export (83)" done
+			has mission "Harvest (86)" done
+			has mission "Harvest (87)" done
+			has mission "Harvest (88)" done
+			has mission "Harvest (89)" done
+			has mission "Harvest (94)" done
+			has mission "Harvest (95)" done
+			has mission "Harvest (96)" done
+			has mission "Harvest (97)" done
+			has mission "Harvest (98)" done	
+	on offer	conversation	` Estrella, now your gouverneurs assistant, sends you a message: "Dear Gouverneur <first> <last> again thanks for the job you gave to me. This week there is a gouverneurs-gathering on utopia, i inform you. The others have already decide, the honour to be the next gouverneur of trade and external affairs, belongs to you!" she beams from ear to ear "There is a second Jump Drive ready, same price like last time" `
+	to accept	cargo	"Mysterious Treasure" >=300
+	on fail
+		dialog "You have failed the last USC-mission. To continue the storyline, load from your last game save."
+	on complete	outfit	"Mysterious Treasure" -400
+			outfit	"Alien Artifact" -20
+			"player reputation: USC" = +10
+			outfit  "Orange Jump Drive" +1
+			"salary: USC" = +35000
+############################################################################################################			
+		

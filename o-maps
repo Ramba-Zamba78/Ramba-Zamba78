@@ -1,0 +1,237 @@
+Freeware from Daniel Waldmüller
+#----------------------------------------------
+system Oberon
+	"display name" Oberon
+	hidden
+	pos -20.200 261.500
+	government "USC"
+	attribute	oberon
+	ramscoop	8
+	habitable	3500
+	link	Outreach
+	belt		1000
+	belt		1500
+	belt		2000
+	minables  "metallic" 60 5
+	minables  "titanium" 10 6
+	minables  "tungsten" 10 7
+	minables  "silver" 10 8
+	trade	"Clothing" 220
+	trade	"Electronics" 750
+	trade	"Equipment" 350
+	trade 	"Food" 130
+	trade 	"Heavy Metals" 1350
+	trade 	"Industrial" 380
+	trade 	"Luxury Goods" 1050
+	trade 	"Medical" 600
+	trade 	"Metal" 650
+	trade 	"Plastic" 330
+	object
+		sprite star/giant
+		period 10
+		object	
+			sprite star/g5
+			distance 150
+			period 24.500
+	object "Solaris"
+		sprite planet/desert2
+		distance 2800.00
+		period 320
+		objekt  
+	object "NewAvalon"
+		sprite planet/rock1
+		distance 3500.00
+		period 480
+	object "Eternia"
+		sprite planet/ice7
+		distance 4500.00
+		period 900
+
+#------------------------------------
+system Outreach
+	"display name" Outreach
+	hidden
+	pos -58.500 272.780
+	government "USC"
+	attribute	outreach
+	arrival	2750
+	departure	2100
+	ramscoop	4
+	habitable	2000
+	link	Oberon
+	belt 3200
+	belt 3800
+	belt 4400
+	minables copper 40 2
+	minables gold 80 5
+	minables neodymium 50 3	
+	minables uranium 60 4	
+	minables treasure 70 7
+	minables yottrite 5 9
+	invicible fence 6900	 
+	trade "Clothing" 350
+	trade "Electronics" 450
+	trade "Equipment" 800
+	trade "Food" 350
+	trade "Heavy Metals" 900
+	trade "Industrial" 1000
+	trade "Luxury Goods" 980
+	trade "Medical" 450
+	trade "Metal" 180
+	trade "Plastic" 350
+#	fleet "USC-Patrol-Fleet1"
+#	raid
+	object
+		sprite star/giant
+		period 10
+		object
+			sprite star/wr1
+			distance 550
+			period 14
+	object	"Molongiena"
+		sprite planet/desert2
+		distance 1490.00
+		period 180.14
+	object	"Utopia"
+		sprite planet/cloud1
+		distance 1820.00
+		period 272.50	
+	object	"Sielwode"
+		sprite planet/forest6
+		distance 2150.00
+		period 365.14	
+	object  "Quentin"
+		sprite planet/cloud5
+		distance 2800.00
+		period 498.80
+		object  "Tharkad"
+			sprite planet/ice4
+			distance 250.90
+			period 24.50		
+	object
+		sprite planet/fg_gas3
+		distance 5200
+		period 3650.10
+		offset 60.00
+		object	"Molon"
+			sprite planet/rock5
+			scale 0.5
+			distance 250.90
+			period 72.0090
+	add object
+		sprite planet/fg_gas22
+		distance 6000.00
+		period 1834.90
+		offset 60.0000
+
+#----------------------------------------------------------------------------------
+planet "Eternia"
+	attributes 	"oberon" "eternia"
+	landscape	land/Eternia1
+	description	`eternia is a very cold iceworld with -30°C on sunside and -130°C on darkside. the self-roration is with 9h fast. there are no seismic or vucanic aktivity left, but a low magnetic field because the inside of this planet is full of heavy metals. the tin atmosphere is breathable, a benefit, but it has to be warmth up. eternia is grown with industry in hope the co² will warm up the planet in far future. frozen water is 14% of eternias surface, not many but enough.`
+	spaceport `Nicht viel los hier: ein beheiztes Kino, eine Lounge mit Buffet, Eisdiele...`
+	"required reputation: USC" >= 1
+	security 0.1
+	tribute 200
+	
+planet "NewAvalon"
+	attributes	"oberon" "newavalon"
+	landscape	land/NewAvalon1
+	description	`this rocky terranian world is used for low industry, mining, and fishing. NewAvalon has a fruitable surface but is less on flat space. many rocks, sees, fjords, wooden hills, klumms and old vulcanos, because there is no moon like on earth. traffic vehicles mostly are straight up aircrafts, boats and hovercrafts. `
+	spaceport `Fisch- und Cocktailbars, Kinos, ein Bootshaus, Auftankstation, und die typischen Outreach-Schiffe und Outfits finfet man hier`
+	shipyard outreachships
+	outfitter outreachoutfits
+	"required reputation: USC" >= 3
+	security 0.5
+	tribute 1500
+	
+planet "Solaris"
+	attributes	"oberon" "map reveal" "solaris"
+	landscape	land/Solaris1
+	description	`Solaris is a really new Terran World populated with Humans, it is the main USC world. 
+	description	`USC has collected a large amount of different shiphulls and outfits blueprints.`
+	description	`Shipyard Company is named: Curiosity Spacecrafts - "we build what you pay for"`
+	description	`Only here you can buy very new equip and lostech as well`
+	spaceport ` Schlaraffenland-Modus, hier wird alles mögliche gehandelt... `
+	shipyard outreachships
+	shipyard solarisships
+	shipyard utopiaships 
+	outfitter outreachoutfits
+	outfitter solarisoutfits
+	outfitter utopiaoutfits 
+	outfitter drive
+	"required reputation: USC" >=8 
+	bribe	0.05
+	security 1
+	tribute 25000
+#----------------------------------------				
+planet "Molongiena"
+	attributes	"molongiena" "outreach"
+	landscape	land/Molongiena1
+	description	"Auf dieser Duerrewelt mit durchschnittlich +45°C werden Silizium, Phosphor und Leichtmetalle für das System gewonnen. Die Arbeiter werden mit denen auf Tharkad, Molon und Quentin mindestens jaehrlich gewechselt, hier wohl um Hitzschlaegen und Sonnenbraenden vorzubeugen. Außerhalb der Hauptstadt befinden sich ein Antriebforschungs-Testgelaende, viele Solarparks und Salzgewinnungs-Speicherseen."
+	spaceport `neben dem Ausrüster findet man eine klimatisierte Bar, ein Steakhouse und ein paar Aufträge hier.`
+	outfitter "outreachoutfits"
+	"required reputation: USC" >= 1
+	bribe	0.02
+	security 0.2
+	tribute 800
+		
+planet "Utopia"
+	attributes	"utopia" "outreach"
+	landscape	land/Utopia1
+	description "Tropisches Klima bei 3% mehr Schwerkraft als auf der Erde. Ähnlich wie Sielwode, nur näher an den Sonnen freuen sich Flora und Fauna ganzjährig auf +25°C. (Bitte keine Stechmücken einführen, danke!) Outreachs Nahrungs-Gigant ist zur Erntezeit auf jeden Arbeiter angewiesen um mit den gewaltigen Agrarmassen fertig zu werden. Zu groß gewordene Familien entsenden freiwillige Familienmitglieder als Arbeiter fürs restliche Jahr auf die vier anderen Welten, wodurch ein reger Handel auch mit den anderen Gütern entsteht, welcher von Utopia aus koordiniert wird. Auch Regierung, Raumwerft und Agrarforschungsabteilung befinden sich auf Utopia."
+	spaceport `Sicherheitszone, kleiner Schwarzmarkt, Restaurants, Freibad, Achterbahn, Karusell, Auftankstation, mehrere Cafes, Bars, Kinos, Casinos nen tollen Ausrüster und eine Fabrik für schwere Frachter und Kriegsschiffe. Utopia bietet nahezu alles was das Abenteurer-Herz begehrt`
+	shipyard "utopiaships" 
+	shipyard "outreachships"
+	outfitter "utopiaoutfits" 
+	outfitter "outreachoutfits"
+	"required reputation: USC" >=3
+	bribe 0.05
+	security 1.0
+	tribute 5000
+
+planet "Sielwode"
+	attributes	"sielwode" "outreach"	
+	landscape	land/Sielwode1
+	description "Unter der dichten Atmosphäre dieses sumpfigen Forstplaneten werden Nahrungsmittel, Mobiliar, Atemgase, Kautschuk und Kleidung hergestellt. Die Vegetation ist üppig, wie auch die Fauna. Sielwode hat keine eisbedeckten Polkappen. Die Luftfeuchtigkeit ist hoch bei ganzjährig +15°C. Gerade wegen diesem stabilen Klima ist kaum Industrie möglich. Die planetare Verwaltung setzt ihre Frachter für den Export ein und stellt die militärisch notwendige System-verteidigung, wodurch Sielwode vom Austauschprogramm der Arbeiter ausgeschlossen ist. Haben sie etwas zu verzollen? --> hier landen!"
+	spaceport `Starterplanet, großes Jobboard, einige Bars und Ausrüster, kleiner Schwarzmarkt, Fabrik für kleine Transporter.`
+	shipyard "outreachships"
+	outfitter "outreachoutfits"
+	"required reputation: USC" >= 1
+	bribe 0.002
+	security 0.5
+	tribute 2000
+
+planet "Quentin"
+	attributes	"quentin" "outreach"
+	landscape	land/Quentin1
+	description "Auf diesem vulkanisch aktivem Mineralienbrocken mit toxischer Atmosphäre werden Schwermetalle, Kristalle und Edelgase für das System gewonnen. Die Temperaturen schwanken deutlich zwischen -60 und +80°C, ohne Schutzanzüge geht nix! Quentins Magnetfeld ist enorm stark, in den oberen Atmosphärenschichten Blitzt es sehr oft. Die Arbeiter werden mit denen auf Molon, Tharkad und Molongiena mindestens jährlich gewechselt, hier wohl um Verätzungen, Vergiftungen und ungewollten Explosionen vorzubeugen. Die Schwerkraft ist 1,6x so hoch wie auf der Erde."
+	spaceport ` Neben den in Fels gehauenen Fabrikanlagen gibt es hier nicht viel: ein roboterbetriebenes Raumcafe, eine Auftankstation und einen unterirdischen Bierkeller, dafür ist die Aussicht phänomenal. `
+	outfitter "outreachoutfits"
+	"required reputation: USC" >= 2
+	bribe 0.03
+	security 0.4
+	tribute 4000
+	
+planet "Tharkad"
+	attributes	"tharkad" "outreach"
+	landscape	land/Tharkad1
+	description "Auf dieser Taiga-Welt werden Wasser und Deuerium für das System gewonnen. In Felshoehlen wird im kleinen Maßstab hier an neuen Generatoren geforscht. Die Schwerkraft ist um 15% höher als auf der Erde, Temperaurenbereich -10°C - -50°C. Die Arbeiter werden mit denen auf Molongiena und Quentin mindestens jaehrlich gewechselt, hier wohl um Erfrierungen und Frostbeulen vorzubeugen. Es gibt sogar eine spärliche frostfeste Vegetation, jedoch keine Fauna."
+	spaceport `Neben einem Thermalbad mit Sauna, einem Raumcafe und einem kleinen Ausrüster gibts hier nur Frostbeulen`
+	outfitter "outreachoutfits"
+	"required reputation: USC" >= 1
+	bribe 0.002
+	security 0.2
+	tribute 400
+
+planet "Molon"
+	attributes	"molon" "outreach"
+	landscape	land/Molon1
+	description "Molon ist der entlegenste Ort in ganz Outreach, ein finsterer atmosphärenloser Metallklumpen der den zweiten Gasriesen umkreist, auf welchem Metalle von Bergbau-Robotern abgebaut und mithilfe von Magnetbahnen zu den Verladedocks und Raumfrachtern gebracht wird. Molon dreht sich entgegengesetzt und hat 1/4 Schwerkraft. Durch die lange Flugzeit bleiben Arbeiter doppelt so lange auf Molon, das und die massiven körperlichen Belastungen durch geringe Schwerkraft, tragen dazu bei das die Arbeiter trotz doppeltem Lohn ungerne nach Molon kommen." 
+	spaceport ``
+	"required reputation: USC" >= 1
+	bribe 0.001
+	security 0.1
+	tribute 200
+#-----------------------------------------------------------------------------------------------
+

@@ -1,0 +1,26 @@
+Copyright? Its Freeware from Daniel Waldmüller
+
+outfit "USC-License"
+	category "Licences"
+	cost 10000
+	thumbnail "Images/USC-License"
+	description `"The official USC-License which gives Landing Permissions on nearly all Planets in USC-Space and set the players Reputation to 5."`
+	giv "landing permissions: Quentin" +1
+	giv "landing permissions: Utopia" +1
+	giv "landing permissions: NewAvalon" +1
+	"player reputation: USC" = 5
+	"unplunderable" 1
+	"unique" 1
+	
+	
+outfit "USC-Gouverneur-License"
+	category "Licences"
+	cost 10000
+	thumbnail "Images/USC-Gouverneur-License"
+	description `"The official USC-License which gives Landing Permissions to all Planets in USC-Space and set the players Reputation to 10."`
+	giv "landing permissions: Quentin" +1
+	giv "landing permissions: Utopia" +1
+	giv "landing permissions: NewAvalon" +1
+	"player reputation: USC" = 10
+	"unplunderable" 1
+	"unique" 1

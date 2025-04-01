@@ -1,0 +1,57 @@
+Copyright? It's Freeware from Daniel Waldmüller
+#---------------------------------------------------------
+minable "treasure"
+	sprite "asteroid/small rock/spin"
+	hull 10000
+	"random hull" 2000
+	payload "Mysterious Treasure" 3
+	payload "fossil" 6
+	payload "Alien Artifact" 1
+	explode "smoke" 20
+	explode "bolide" 20
+	explode "asteroid crunch small"
+	
+	
+minable "metalrock"
+	sprite "asteroid/metallic/spin"
+	hull 2500
+	"random hull" 1000
+	payload "Iron" 12
+	payload "Pyrite" 4
+	payload "Silver" 2
+	payload "Fossil" 2
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch small"
+	
+#-------------------------------------------------------
+	
+outfit "Alien Artifact"
+	category "Special"
+	cost 1000000
+	thumbnail "outfit/treasure"
+	"mass" 1
+	description "This is an artifact from an unknown alien civilization that once occupied what is now human space. You can sell it for a significant sum!"
+	description "This is a rare artifact. You can install it on your ship to keep it from getting mixed in with the regular cargo."
+
+
+outfit "Fossil"
+	plural "Fossils"
+	category "Special"
+	cost 100
+	thumbnail "outfit/harvested fossil"
+	"flotsam sprite" "effect/flotsam fossil"
+	"mass" 1
+	description "An alien fossil found in the void of space. Unless you can find the right buyer, most will only see a cheap trinket that can be sold as a souvenir to gullible tourists."
+	description "This is a rare specimen. You can install it on your ship to keep it from getting mixed in with the regular cargo."
+
+
+outfit "Mysterious Treasure"
+	category "Special"
+	cost 100000
+	thumbnail "outfit/treasure"
+	"flotsam sprite" "effect/box"
+	"mass" 1
+	description "The old stories of pirates burying treasure in some out of the way dirt clod are true! While you can sell it anywhere for a modest sum, having it appraised by someone with knowledge of rare artifacts may yield better results."
+	description "This may be a rare artifact. You can install it on your ship to keep it from getting mixed in with the regular cargo."
+####################################################################
